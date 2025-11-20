@@ -1,0 +1,303 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+/* THEME */
+:root {
+    --spotify-green: #1db954;
+    --spotify-black: #191414;
+    --spotify-dark: #121212;
+    --spotify-mid: #535353;
+    --spotify-light: #b3b3b3;
+    --white: #ffffff;
+}
+
+/* BODY */
+body {
+    background: linear-gradient(135deg, #191414 0%, #121212 50%, #0a0a0a 100%);
+    color: var(--white);
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+/* HEADER */
+.header {
+    text-align: center;
+    margin: 15px 0;
+}
+.title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--white);
+    font-family: 'Righteous', cursive;
+    letter-spacing: 2px;
+    text-shadow: 0 0 20px rgba(29, 185, 84, 0.5);
+}
+.tagline {
+    margin-top: -5px;
+    color: var(--spotify-green);
+    font-size: 1.1rem;
+}
+
+/* 3-COLUMN GRID */
+.main-grid {
+    display: grid;
+    grid-template-columns: 28% 44% 28%;
+    padding: 10px 40px;
+    height: 80vh;
+}
+
+/* LEFT COLUMN (DISC) */
+.left-col {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.disc-container {
+    transform: translateX(-20px);
+}
+
+.disc {
+    width: 420px;
+    height: 420px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #444 10%, #222 40%, #000 75%);
+    position: relative;
+    animation: spin 8s linear infinite;
+    box-shadow: 0 0 40px rgba(29,185,84,0.4), inset 0 0 30px rgba(0,0,0,0.8);
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.disc-center {
+    width: 85px;
+    height: 90px;
+    background: var(--spotify-green);
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 20px rgba(29, 185, 84, 0.6);
+}
+
+/* Curved Song Text with SVG */
+.curved-text-svg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    animation: spin 8s linear infinite;
+    pointer-events: none;
+}
+
+.disc-text {
+    fill: var(--spotify-green);
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 10px;
+    text-transform: lowercase;
+    font-family: "Black Ops One", sans-serif;
+}
+
+/* MIDDLE COLUMN */
+.middle-col {
+    padding: 0 40px;
+    text-align: center;
+    overflow-y: auto;
+    max-height: 80vh;
+}
+
+/* Custom scrollbar for middle column */
+.middle-col::-webkit-scrollbar {
+    width: 8px;
+}
+
+.middle-col::-webkit-scrollbar-track {
+    background: var(--spotify-black);
+    border-radius: 10px;
+}
+
+.middle-col::-webkit-scrollbar-thumb {
+    background: var(--spotify-green);
+    border-radius: 10px;
+}
+
+.predict-form {
+    margin-top: 40px;
+}
+
+.mood-select {
+    width: 70%;
+    padding: 12px;
+    background: var(--spotify-black);
+    border: 2px solid var(--spotify-mid);
+    color: var(--white);
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.mood-select:hover {
+    border-color: var(--spotify-green);
+}
+
+.predict-btn {
+    margin-top: 12px;
+    padding: 12px 25px;
+    background: var(--spotify-green);
+    border: none;
+    color: var(--spotify-black);
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s ease;
+}
+
+.predict-btn:hover {
+    background: #1ed760;
+    transform: scale(1.05);
+}
+
+.section-title {
+    font-size: 1.7rem;
+    color: var(--spotify-green);
+    margin-bottom: 10px;
+    margin-top: 20px;
+}
+
+.description {
+    color: var(--spotify-light);
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+}
+
+.song-list {
+    margin-top: 15px;
+    list-style: none;
+    text-align: left;
+}
+
+.song-item {
+    padding: 12px 15px;
+    border-bottom: 1px solid var(--spotify-mid);
+    transition: 0.2s ease;
+}
+
+.song-item:hover {
+    background: rgba(29, 185, 84, 0.1);
+    border-left: 3px solid var(--spotify-green);
+    padding-left: 20px;
+}
+
+/* BACK BUTTON */
+.back-btn {
+    display: inline-block;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    padding: 12px 30px;
+    background: var(--spotify-green);
+    color: var(--spotify-black);
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    transition: 0.3s ease;
+}
+
+.back-btn:hover {
+    background: #1ed760;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(29, 185, 84, 0.4);
+}
+
+/* RIGHT COLUMN */
+.right-col {
+    text-align: center;
+    padding: 20px;
+}
+
+.right-header {
+    font-size: 1.8rem;
+    color: var(--spotify-green);
+    margin-bottom: 25px;
+}
+
+.right-category-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.side-btn {
+    display: block;
+    padding: 14px 25px;
+    background: var(--spotify-black);
+    color: var(--spotify-green);
+    border: 2px solid var(--spotify-green);
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s ease;
+    font-size: 15px;
+}
+
+.side-btn:hover {
+    background: var(--spotify-green);
+    color: var(--spotify-black);
+    transform: translateX(5px);
+    box-shadow: 0 5px 15px rgba(29, 185, 84, 0.3);
+}
+
+/* MUSIC TOGGLE */
+#toggle-music {
+    position: fixed;
+    bottom: 35px;
+    right: 35px;
+    background: var(--spotify-green);
+    border: 2px solid rgba(255,255,255,0.1);
+    padding: 16px 18px;
+    font-size: 24px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 20px rgba(29, 185, 84, 0.5);
+    z-index: 1000;
+}
+
+#toggle-music:hover {
+    transform: scale(1.15) rotate(15deg);
+    box-shadow: 0 8px 30px rgba(29, 185, 84, 0.7);
+    background: #1ed760;
+}
+
+#toggle-music:active {
+    transform: scale(1.05);
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+    .main-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .disc-container {
+        transform: none;
+    }
+    
+    .title {
+        font-size: 2.5rem;
+    }
+}

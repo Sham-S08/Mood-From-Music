@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moodify – Know Your Taste</title>
+
+    <!-- Google Font for heading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
+
+    <!-- CSS + JS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script defer src="{{ url_for('static', filename='scripts.js') }}"></script>
+</head>
+
+<body>
+
+    <!-- 🎵 BACKGROUND MUSIC -->
+    <audio id="bg-music"
+       src="{{ url_for('static', filename='music/bg_track.mp3') }}"
+       preload="auto">
+    </audio>
+
+
+    <!-- 🔊 MUSIC TOGGLE -->
+    <button id="toggle-music">🔊</button>
+
+    <!-- HEADER -->
+    <header class="header">
+        <h1 class="title">Moodify</h1>
+        <p class="tagline">Know Your Taste</p>
+    </header>
+
+    <!-- 3-COLUMN LAYOUT -->
+    <div class="main-grid">
+
+        <!-- LEFT: Disc -->
+        <div class="left-col">
+            <div class="disc-container">
+                <div class="disc">
+                    <div class="disc-center"></div>
+                    <svg class="curved-text-svg" viewBox="0 0 200 200">
+                        <defs>
+                            <path id="circlePath" d="M 100, 100 m -75, 0 a 75,75 0 1,1 150,0 a 75,75 0 1,1 -150,0" />
+                        </defs>
+                        <text class="disc-text">
+                            <textPath href="#circlePath">
+                                ~ Tera Hone Laga Hoon ~
+                            </textPath>
+                        </text>
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <!-- MIDDLE COLUMN -->
+        <div class="middle-col">
+
+            <!-- SHOW PREDICTION BOX ALWAYS except during 20-song category list -->
+            {% if not is_category_page %}
+            <form method="POST" action="/predict" class="predict-form">
+                <select name="mood_input" class="mood-select">
+                    <option disabled selected>Select mood category</option>
+                    <option value="Chill/Lo-Fi">Chill / Lo-Fi</option>
+                    <option value="Sad/soft">Sad / Soft</option>
+                    <option value="Romantic">Romantic</option>
+                    <option value="High-energy gym track">High Energy / Gym</option>
+                    <option value="Party/Dance track">Party / Dance</option>
+                </select>
+                <button type="submit" class="predict-btn">Predict</button>
+            </form>
+            {% endif %}
+
+            <!-- SONG LIST (Top 7 or Full 20) -->
+            {% if songs %}
+                <h2 class="section-title">{{ selected_category }}</h2>
+                <p class="description">{{ description }}</p>
+
+                <ul class="song-list">
+                    {% for s in songs %}
+                        <li class="song-item">
+                            <strong>{{ s.track_name }}</strong> — {{ s.artists }}
+                        </li>
+                    {% endfor %}
+                </ul>
+
+                <!-- BACK BUTTON only for 20-song category mode -->
+                {% if is_category_page %}
+                    <a href="/" class="back-btn">← Back to Home</a>
+                {% endif %}
+            {% endif %}
+        </div>
+
+        <!-- RIGHT COLUMN: Mood Buttons -->
+        <div class="right-col">
+            <h2 class="right-header">What's Your Mood?</h2>
+
+            <div class="right-category-buttons">
+                <a href="/mood/Chill%2FLo-Fi" class="side-btn">Chill / Lo-Fi</a>
+                <a href="/mood/Sad%2Fsoft" class="side-btn">Sad / Soft</a>
+                <a href="/mood/Romantic" class="side-btn">Romantic</a>
+                <a href="/mood/High-energy%20gym%20track" class="side-btn">High Energy</a>
+                <a href="/mood/Party%2FDance%20track" class="side-btn">Party / Dance</a>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

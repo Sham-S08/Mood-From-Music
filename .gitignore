@@ -1,0 +1,23 @@
+# virtualenv
+.venv/
+env/
+venv/
+
+# data and models
+data/raw/
+data/processed/
+models/
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
+
+# python
+__pycache__/
+*.pyc
+
+# OS
+.DS_Store
+Thumbs.db
+
+# VS Code
+.vscode/
