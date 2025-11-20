@@ -1,23 +1,20 @@
-# virtualenv
-.venv/
-env/
-venv/
+# Python cache
+__pycache__/
+*.pyc
 
-# data and models
-data/raw/
-data/processed/
-models/
+# Virtual environment
+venv/
+.env/
+
+# Model files (optional if large)
+models/*.pkl
 
 # Jupyter checkpoints
 .ipynb_checkpoints/
 
-# python
-__pycache__/
-*.pyc
-
-# OS
-.DS_Store
-Thumbs.db
-
 # VS Code
 .vscode/
+
+# System files
+.DS_Store
+Thumbs.db
