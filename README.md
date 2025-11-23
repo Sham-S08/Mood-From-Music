@@ -37,12 +37,17 @@ Using these features, it classifies songs into multiple mood categories:
 
 Mood_From_Music/
 │── app.py
+│
 │── data/
 │   └── dataset.csv
+│
 │── static/
 │   ├── style.css
 │   ├── scripts.js
-│   └── music/bg_track.mp3
+│   └── music/
+│       └── bg_track.mp3
+│
 │── templates/
 │   └── index.html
-│── requirements.txt
+│
+└── requirements.txt
